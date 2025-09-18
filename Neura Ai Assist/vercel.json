@@ -1,3 +1,5 @@
+[file name]: vercel.json
+[file content begin]
 {
   "version": 2,
   "name": "neura-ai-assist",
@@ -7,38 +9,46 @@
       "use": "@vercel/static"
     },
     {
-      "src": "assets/*",
+      "src": "*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.xml",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.txt",
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/index.html"
+      "source": "/",
+      "destination": "/index.html"
     },
     {
-      "src": "/about",
-      "dest": "/about.html"
+      "source": "/about",
+      "destination": "/about.html"
     },
     {
-      "src": "/services",
-      "dest": "/services.html"
+      "source": "/services",
+      "destination": "/services.html"
     },
     {
-      "src": "/solutions",
-      "dest": "/solutions.html"
+      "source": "/solutions",
+      "destination": "/solutions.html"
     },
     {
-      "src": "/pricing",
-      "dest": "/pricing.html"
+      "source": "/pricing",
+      "destination": "/pricing.html"
     },
     {
-      "src": "/contact",
-      "dest": "/contact.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/contact",
+      "destination": "/contact.html"
     }
   ],
   "headers": [
@@ -60,7 +70,7 @@
       ]
     },
     {
-      "source": "/assets/(.*)",
+      "source": "/(.*).(css|js)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -70,3 +80,4 @@
     }
   ]
 }
+[file content end]

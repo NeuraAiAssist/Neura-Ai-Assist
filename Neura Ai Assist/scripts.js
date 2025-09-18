@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (mobileMenuToggle) {
     mobileMenuToggle.addEventListener('click', function() {
       navMenu.classList.toggle('active');
+      this.classList.toggle('active');
     });
   }
 
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close mobile menu if open
         if (navMenu.classList.contains('active')) {
           navMenu.classList.remove('active');
+          mobileMenuToggle.classList.remove('active');
         }
       }
     });
@@ -99,10 +101,20 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       if (isValid) {
-        // In a real application, you would send the form data to a server here
-        // For this example, we'll just show a success message
-        alert('Thank you for your message! We will get back to you soon.');
+        // Create and show success message
+        const successMessage = document.createElement('div');
+        successMessage.className = 'form-success';
+        successMessage.innerHTML = '<p>Thank you for your message! We will get back to you soon.</p>';
+
+        // Insert before form
+        contactForm.parentNode.insertBefore(successMessage, contactForm);
+        successMessage.style.display = 'block';
+
+        // Reset form
         this.reset();
+
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: 'smooth' });
       }
     });
   }
@@ -136,7 +148,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Floating card animations
   const floatingCards = document.querySelectorAll('.floating-card');
-  floatingCards.forEach(card => {
-    card.style.animationDelay = card.getAttribute('data-delay') || '0s';
+  floatingCards.forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.5}s`;
+  });
+
+  // Add initials to team member images
+  const teamMembers = document.querySelectorAll('.team-member');
+  teamMembers.forEach(member => {
+    const imageEl = member.querySelector('.member-image');
+    const name = member.querySelector('h3').textContent;
+
+    if (imageEl && !imageEl.textContent) {
+      // Get initials from name
+      const initials = name.split(' ').map(n => n[0]).join('').toUpperCase();
+      imageEl.textContent = initials;
+    }
   });
 });
+[file content end]
