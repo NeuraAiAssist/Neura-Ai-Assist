@@ -1,5 +1,4 @@
-[file name]: vercel.json
-[file content begin]
+
 {
   "version": 2,
   "name": "neura-ai-assist",
@@ -81,3 +80,4 @@
   ]
 }
 [file content end]
+
