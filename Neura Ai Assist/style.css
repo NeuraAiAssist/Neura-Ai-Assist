@@ -131,17 +131,54 @@ a:hover {
   padding: 0 20px;
 }
 
+/* Updated Logo Styles */
 .logo {
   display: flex;
   align-items: center;
   font-weight: 700;
   font-size: 1.5rem;
   color: white;
+  gap: 0.75rem;
 }
 
+.logo-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Remove the old logo icon styles */
 .logo-icon {
-  margin-right: 0.5rem;
-  font-size: 1.8rem;
+  display: none;
+}
+
+/* Responsive Logo */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .logo-image {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.1rem;
+    gap: 0.5rem;
+  }
+
+  .logo-image {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logo span {
+    display: none; /* Hide text on very small screens if needed */
+  }
 }
 
 .nav-menu {
